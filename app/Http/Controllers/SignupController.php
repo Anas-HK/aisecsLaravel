@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -34,7 +35,7 @@ class SignupController extends Controller
 
             // Recipients
             $mail->setFrom($validatedData['email'], $validatedData['name']); // Sender's email address and name
-            $mail->addAddress('anas.h.k2244@gmail.com'); // Recipient's email address
+            $mail->addAddress('info@aisecs.io'); // Recipient's email address
 
             // Content
             $mail->isHTML(true); // Set email format to HTML
@@ -56,9 +57,11 @@ class SignupController extends Controller
             ";
 
             $mail->send();
-            return "Thank you for signing up! We will get back to you soon.";
+            return redirect()->route('message')->with('success', 'Thank you for signing up! We will get back to you soon.');
+
         } catch (Exception $e) {
-            return "Failed to send email. Error: {$mail->ErrorInfo}";
+            return redirect()->route('message')->with('error', 'Failed to send email. Please try again later.');
+
         }
     }
 
@@ -95,41 +98,41 @@ class SignupController extends Controller
 
             // Recipients
             $mail->setFrom($validatedData['company_rep_email'], $validatedData['company_rep_name']); // Sender's email address and name
-            $mail->addAddress('anas.h.k2244@gmail.com'); // Recipient's email address
+            $mail->addAddress('info@aisecs.io'); // Recipient's email address
 
             // Content
             $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = 'New Sign Up';
             $mail->Body = "
-            <html>
-            <head>
-                <title>New Sign Up</title>
-            </head>
-            <body>
-                <h2>Company Representative Details</h2>
-                <p><strong>Name:</strong> {$validatedData['company_rep_name']}</p>
-                <p><strong>Date of Birth:</strong> {$validatedData['date_of_birth']}</p>
-                <p><strong>Position:</strong> {$validatedData['position']}</p>
-                <p><strong>Contact Number:</strong> {$validatedData['contact_number']}</p>
-                <p><strong>Business Number:</strong> {$validatedData['business_number']}</p>
-                <p><strong>Email:</strong> {$validatedData['company_rep_email']}</p>
+                <html>
+                <head>
+                    <title>New Sign Up</title>
+                </head>
+                <body>
+                    <h2>Company Representative Details</h2>
+                    <p><strong>Name:</strong> {$validatedData['company_rep_name']}</p>
+                    <p><strong>Date of Birth:</strong> {$validatedData['date_of_birth']}</p>
+                    <p><strong>Position:</strong> {$validatedData['position']}</p>
+                    <p><strong>Contact Number:</strong> {$validatedData['contact_number']}</p>
+                    <p><strong>Business Number:</strong> {$validatedData['business_number']}</p>
+                    <p><strong>Email:</strong> {$validatedData['company_rep_email']}</p>
 
-                <h2>Business Details</h2>
-                <p><strong>Business Name:</strong> {$validatedData['business_name']}</p>
-                <p><strong>Business Details:</strong> {$validatedData['business_details']}</p>
-                <p><strong>Business Address:</strong> {$validatedData['business_address']}</p>
-                <p><strong>Business Phone:</strong> {$validatedData['business_phone']}</p>
-                <p><strong>Business Email:</strong> {$validatedData['business_email']}</p>
-                <p><strong>Business Website:</strong> {$validatedData['business_website']}</p>
-            </body>
-            </html>
-        ";
+                    <h2>Business Details</h2>
+                    <p><strong>Business Name:</strong> {$validatedData['business_name']}</p>
+                    <p><strong>Business Details:</strong> {$validatedData['business_details']}</p>
+                    <p><strong>Business Address:</strong> {$validatedData['business_address']}</p>
+                    <p><strong>Business Phone:</strong> {$validatedData['business_phone']}</p>
+                    <p><strong>Business Email:</strong> {$validatedData['business_email']}</p>
+                    <p><strong>Business Website:</strong> {$validatedData['business_website']}</p>
+                </body>
+                </html>
+            ";
 
             $mail->send();
-            return "Thank you for signing up! We will get back to you soon.";
+            return redirect()->route('message')->with('success', 'Thank you for signing up! We will get back to you soon.');
         } catch (Exception $e) {
-            return "Failed to send email. Error: {$mail->ErrorInfo}";
+            return redirect()->route('message')->with('error', 'Failed to send email. Please try again later.');
+
         }
     }
-
 }
