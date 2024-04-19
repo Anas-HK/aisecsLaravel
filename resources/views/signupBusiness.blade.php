@@ -62,6 +62,11 @@
             margin-bottom: 30px;
             text-align: center;
         }
+        .package-name {
+            text-align: center;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -69,8 +74,16 @@
 <div class="signup-form">
     <h2 class="text-center mb-4">Sign Up</h2>
     <hr class = "signup-separator">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" id="package" name="package" class="form-control package-name text-center" value="{{ $packageName }}" readonly>
+            </div>
+        </div>
+    </div>
     <form method="post" action="{{ route('signup.business') }}">
         @csrf <!-- CSRF Protection -->
+        <input type="hidden" name="package_name" value="{{ $packageName }}">
         <div class="row">
             <div class="text-center col-md-6">
                 <h4>Company CR Details</h4>
@@ -92,6 +105,9 @@
                 <div class="form-group">
                     <input type="email" name="company_rep_email" class="form-control" placeholder="CR Email" required="required">
                 </div>
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="Username for Account" required="required">
+                </div>
             </div>
             <div class="col-md-6">
                 <h4 class="text-center">Business Details</h4>
@@ -112,6 +128,9 @@
                 </div>
                 <div class="form-group">
                     <input type="text" name="business_website" class="form-control" placeholder="Business Website (optional)">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required="required">
                 </div>
             </div>
         </div>

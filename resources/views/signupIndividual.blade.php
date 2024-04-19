@@ -46,7 +46,16 @@
     <form method="post" action="{{ route('signup.individual') }}">
         @csrf <!-- CSRF Protection -->
         <div class="form-group">
-            <input type="text" name="name" class="form-control" placeholder="Name and Surname" required="required">
+            <input type="text" name="package" class="form-control" value="{{ $packageName }}" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Fullname" required="required">
+        </div>
+        <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="Username for account" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Password" required="required">
         </div>
         <div class="form-group">
             <input type="text" name="address" class="form-control" placeholder="Address" required="required">

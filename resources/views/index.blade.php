@@ -38,7 +38,6 @@
 
 
 <body>
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex justify-content-between">
@@ -59,6 +58,7 @@
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <!-- New list item for Login -->
           <li><a class="nav-link scrollto" href="#pricing">Sign Up</a></li>
+          <li><a href="{{route('login')}}">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -565,7 +565,7 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <!-- Active focuses the package and then you can apply discount -->
             <div class="pri_table_list active">
-              <h3>basic <br /> <span>$50 / 3 months</span></h3>
+              <h3>Package 01 <br /> <span>$50 / 3 months</span></h3>
               <ol>
                 <li class="check"><i class="bi bi-check"></i><span>1 Camera</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
@@ -574,13 +574,13 @@
                 <li class="cross"><i class="bi bi-x"></i><span>Human Activity</span></li>
                 <li class="cross"><i class="bi bi-x"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Basic%20Package%2001'">Sign Up Now</button>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="pri_table_list active">
               <!-- <span class="saleon">10% Off</span> -->
-              <h3>standard <br /> <span>$90 / 3 month</span></h3>
+              <h3>Package 02 <br /> <span>$90 / 3 month</span></h3>
               <ol>
                 <li class="check"><i class="bi bi-check"></i><span>1 Camera</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
@@ -589,7 +589,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Basic%20Package%2002'">Sign Up Now</button>
             </div>
           </div>
 
@@ -597,7 +597,7 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="pri_table_list active">
               <!-- <span class="saleon">20% Off</span> -->
-              <h3>premium <br /> <span>$140 / year</span></h3>
+              <h3>Package 03 <br /> <span>$140 / year</span></h3>
               <ol>
                 <li class="check"><i class="bi bi-check"></i><span>1 Camera</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
@@ -606,7 +606,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Basic%20Package%2003'">Sign Up Now</button>
             </div>
           </div>
         </div>
@@ -636,7 +636,7 @@
                 <li class="cross"><i class="bi bi-x"></i><span>Human Activity</span></li>
                 <li class="cross"><i class="bi bi-x"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Standard%20Package%2001'">Sign Up Now</button>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-12">
@@ -651,7 +651,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Standard%20Package%2002'">Sign Up Now</button>
             </div>
           </div>
 
@@ -668,7 +668,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Standard%20Package%2003'">Sign Up Now</button>
             </div>
           </div>
         </div>
@@ -698,7 +698,7 @@
                 <li class="cross"><i class="bi bi-x"></i><span>Human Activity</span></li>
                 <li class="cross"><i class="bi bi-x"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Premium%20Package%2001'">Sign Up Now</button>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-12">
@@ -713,7 +713,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Premium%20Package%2002'">Sign Up Now</button>
             </div>
           </div>
 
@@ -730,7 +730,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.individual') }}?package=Individual%20Premium%20Package%2003'">Sign Up Now</button>
             </div>
           </div>
         </div>
@@ -765,7 +765,7 @@
                 <li class="cross"><i class="bi bi-x"></i><span>Human Activity</span></li>
                 <li class="cross"><i class="bi bi-x"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Basic%20Package%2001'">Sign Up Now</button>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-12">
@@ -780,7 +780,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Basic%20Package%2002'">Sign Up Now</button>
             </div>
           </div>
 
@@ -797,7 +797,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Basic%20Package%2003'">Sign Up Now</button>
             </div>
           </div>
         </div>
@@ -827,7 +827,7 @@
                 <li class="cross"><i class="bi bi-x"></i><span>Human Activity</span></li>
                 <li class="cross"><i class="bi bi-x"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Standard%20Package%2001'">Sign Up Now</button>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-12">
@@ -842,7 +842,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Standard%20Package%2002'">Sign Up Now</button>
             </div>
           </div>
 
@@ -859,7 +859,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Standard%20Package%2003'">Sign Up Now</button>
             </div>
           </div>
         </div>
@@ -889,7 +889,7 @@
                 <li class="cross"><i class="bi bi-x"></i><span>Human Activity</span></li>
                 <li class="cross"><i class="bi bi-x"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Premium%20Package%2001'">Sign Up Now</button>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-12">
@@ -904,7 +904,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Premium%20Package%2002'">Sign Up Now</button>
             </div>
           </div>
 
@@ -921,7 +921,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
-                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}'">Sign Up Now</button>
+                <button class="black-button" onclick="window.location.href='{{ route('signup.business') }}?package=Business%20Premium%20Package%2003'">Sign Up Now</button>
             </div>
           </div>
         </div>
