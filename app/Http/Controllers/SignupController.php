@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BusinessUser;
 use App\Models\IndividualUser;
+use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,11 @@ class SignupController extends Controller
             // Hash the password
             $hashedPassword = Hash::make($validatedData['password']);
 
+            // Check if the username is already taken
+            if (User::where('username', $validatedData['username'])->exists()) {
+                return redirect()->route('message')->with('error', 'Username is already taken. Please choose a different one.');
+            }
+
             // Save the data to the database
             $user = new IndividualUser();
             $user->package_name = $request->input('package');;
@@ -41,6 +47,14 @@ class SignupController extends Controller
             $user->mobile = $validatedData['mobile'];
             $user->email = $validatedData['email'];
             $user->next_of_kin = $validatedData['next_of_kin'];
+            $user->save();
+
+            // Save the data to the database
+            $user = new User();
+            $user->username = $validatedData['username'];
+            $user->email = $validatedData['email'];
+            $user->password = $hashedPassword;
+            $user->user_type = 'individual'; // Set user type to Individual
             $user->save();
 
             // Create new IndividualUser instance and save the data
@@ -118,8 +132,12 @@ class SignupController extends Controller
         // Hash the password
         $hashedPassword = Hash::make($validatedData['password']);
 
+        // Check if the username is already taken
+        if (User::where('username', $validatedData['username'])->exists()) {
+            return redirect()->route('message')->with('error', 'Username is already taken. Please choose a different one.');
+        }
+
         try {
-            // Save data to the database
             // Save data to the database
             $businessUser = new BusinessUser();
             $businessUser->package_name = $request->input('package_name'); // Retrieve package_name from the request
@@ -138,6 +156,13 @@ class SignupController extends Controller
             $businessUser->business_website = $validatedData['business_website'];
             $businessUser->password = $hashedPassword;
             $businessUser->save();
+
+            $user = new User();
+            $user->username = $validatedData['username'];
+            $user->email = $validatedData['company_rep_email'];
+            $user->password = $hashedPassword;
+            $user->user_type = 'business'; // Set user type to Individual
+            $user->save();
 
             // Initialize PHPMailer
             $mail = new PHPMailer(true); // Passing `true` enables exceptions
@@ -186,8 +211,10 @@ class SignupController extends Controller
             $mail->send();
             return redirect()->route('message')->with('success', 'Thank you for signing up! We will get back to you soon.');
         } catch (QueryException $e) {
-            if ($e->getCode() == '23000') { // Check for integrity constraint violation
-                return redirect()->route('message')->with('error', 'This email address is already registered. Please use a different email address.');
+            // Check if the exception is due to a duplicate entry error (1062)
+            if ($e->errorInfo[1] == 1062) {
+                // Email already taken, redirect back with error message
+                return redirect()->route('message')->with('error', 'Email address is already taken. Please choose a different one.');
             } else {
                 return redirect()->route('message')->with('error', 'Failed to send email. Please try again later.');
             }
@@ -204,35 +231,18 @@ class SignupController extends Controller
             'password' => 'required|string',
         ]);
 
-
-        // Check if the username exists in the individual users table
-        $individualUser = IndividualUser::where('username', $request->username)->first();
-
-        // If not found, check the business users table
-        if (!$individualUser) {
-            $businessUser = BusinessUser::where('username', $request->username)->first();
-
-            // If no user found in either table, redirect back with error message
-            if (!$businessUser) {
-                return redirect()->route('message')->with('error', 'Invalid username or password');
-            }
-
-            // Check if password matches
-            if (Hash::check($request->password, $businessUser->password)) {
-                // Authentication successful, redirect to dashboard
-                Auth::login($businessUser);
-                return redirect()->route('dashboard');
-            }
-        } else {
-            // Check if password matches
-            if (Hash::check($request->password, $individualUser->password)) {
-                // Authentication successful, redirect to dashboard
-                Auth::login($individualUser);
-                return redirect()->route('dashboard');
-            }
+        // Attempt to authenticate using the default guard
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            // Authentication successful, redirect to dashboard
+            return redirect()->route('dashboard');
         }
 
-        // If username exists but password doesn't match, redirect back with error message
+        // If authentication fails, redirect back with error message
         return redirect()->route('message')->with('error', 'Invalid username or password');
+    }
+
+    public function logout() {
+        auth()->logout();
+        return redirect()->route('message')->with('success', 'You have been logged out successfully.');
     }
 }

@@ -12,7 +12,7 @@ class CreateIndividualUsersTable extends Migration
             $table->id();
             $table->string('package_name');
             $table->string('name');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
             $table->string('address');
             $table->string('mobile');

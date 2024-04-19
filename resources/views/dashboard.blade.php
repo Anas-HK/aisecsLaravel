@@ -26,7 +26,21 @@
 
 <div class="container">
     <h1>Welcome to the Dashboard</h1>
-    <p>This is your dashboard. You can add your content here.</p>
+
+    @if(Auth::user()->user_type === 'individual')
+        <h2>Individual User Data</h2>
+        <p><strong>Name:</strong> {{ $userData->name }}</p>
+        <p><strong>Username:</strong> {{ $userData->username }}</p>
+        <!-- Add more fields as needed -->
+    @elseif(Auth::user()->user_type === 'business')
+        <h2>Business User Data</h2>
+        <p><strong>Business Name:</strong> {{ $userData->business_name }}</p>
+        <p><strong>Business Address:</strong> {{ $userData->business_address }}</p>
+        <!-- Add more fields as needed -->
+    @else
+        <p>Error: Invalid user type</p>
+    @endif
+
     <p><a href="{{ route('logout') }}" class="btn btn-primary">Logout</a></p>
 </div>
 

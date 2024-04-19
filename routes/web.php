@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('index');
@@ -19,7 +20,8 @@ Route::get('/signup/business', function() {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware('auth')->name('dashboard');
+})->name('dashboard')->middleware('auth');;
+
 
 Route::get('/message', function () {
     return view('message');
@@ -32,7 +34,7 @@ Route::get('/login', function() {
 Route::post('/signup/individual', [SignupController::class, 'sendIndividualEmail'])->name('signup.individual');
 Route::post('/signup/business', [SignupController::class, 'sendBusinessEmail'])->name('signup.business');
 Route::post('/login', [SignupController::class, 'login'])->name('login');
-Route::post('/logout', function () {
-    auth()->logout();
-    return redirect()->route('login')->with('success', 'You have been logged out successfully.');
-})->name('logout');
+
+Route::get('/logout', [SignupController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth');

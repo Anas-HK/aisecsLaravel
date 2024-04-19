@@ -17,7 +17,7 @@ class CreateBusinessUsersTable extends Migration
             $table->string('contact_number');
             $table->string('business_number');
             $table->string('company_rep_email')->unique();
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('business_name');
             $table->string('business_details');
             $table->string('business_address');
