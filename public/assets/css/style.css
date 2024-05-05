@@ -344,7 +344,8 @@ div#preloader {
 * Desktop Navigation
 */
 .navbar {
-  padding: 0;
+    padding: 20px 0; /* Adjust padding as needed */
+    min-height: 80px;
 }
 
 .navbar ul {

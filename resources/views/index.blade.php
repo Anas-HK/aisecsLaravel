@@ -42,12 +42,12 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex justify-content-between">
 
-      <div class="logo">
-          <h1><a href="{{ url('/') }}"><span>security</span>Plus</a></h1>
+      <div class="logo" style="padding: 20px 0;">
+          <h1><a href="{{ url('/') }}"><span>AI </span> Security System Ltd.</a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar" style="padding: 20px 0;">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
@@ -585,7 +585,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>1 Camera</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Visitor Count</span></li>
-                <li class="check"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
+                <li class="cross"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
@@ -602,7 +602,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>1 Camera</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Visitor Count</span></li>
-                <li class="check"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
+                <li class="cross"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
@@ -647,7 +647,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>3 Cameras</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Visitor Count</span></li>
-                <li class="check"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
+                <li class="cross"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
@@ -664,7 +664,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>3 Cameras</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Visitor Count</span></li>
-                <li class="check"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
+                <li class="cross"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
@@ -709,7 +709,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>4 Cameras</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Visitor Count</span></li>
-                <li class="check"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
+                <li class="cross"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
@@ -726,7 +726,7 @@
                 <li class="check"><i class="bi bi-check"></i><span>4 Cameras</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Facial Recognition</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Visitor Count</span></li>
-                <li class="check"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
+                <li class="cross"><i class="bi bi-check"></i><span>Employee Tracking</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Human Activity</span></li>
                 <li class="check"><i class="bi bi-check"></i><span>Mobile Activity</span></li>
               </ol>
@@ -929,6 +929,8 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline text-center enterprise">
               <h3>Enterprises services are offered upon request</h3>
+                <br>
+                <a href = "{{route('demo')}}" style=""><h3><i>Click to request for Demo</i></h3></a>
             </div>
           </div>
         </div>
@@ -1348,7 +1350,7 @@
             <div class="footer-content">
               <div class="footer-head">
                 <div class="footer-logo">
-                  <h2><span>security</span>Plus</h2>
+                  <h2><span>AI </span>Security System Ltd.</h2>
                 </div>
 
                 <p>At AISEC Ltd, we are pioneering the deployment of artificial intelligence for enhanced security solutions. With a focus on Intelligent Face Recognition Technology, our goal is to transform how security systems operate, making them more efficient, reliable, and intelligent.</p>

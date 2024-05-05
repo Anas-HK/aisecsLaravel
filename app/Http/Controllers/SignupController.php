@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessUser;
+use App\Models\Demo;
 use App\Models\IndividualUser;
 use App\Models\User;
 use Illuminate\Database\QueryException;
@@ -220,6 +221,71 @@ class SignupController extends Controller
             }
         } catch (Exception $e) {
             return redirect()->route('message')->with('error', 'Failed to send email. Please try again later.');
+        }
+    }
+
+    public function requestDemo(Request $request)
+    {
+        try {
+            // Validate request data
+            $validatedData = $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email',
+                'address' => 'required|string',
+                'mobile' => 'required|string',
+                'companyName' => 'nullable|string',
+            ]);
+
+            // Save the data to the database
+            $demo = new Demo();
+            $demo->name = $validatedData['name'];
+            $demo->email = $validatedData['email'];
+            $demo->address = $validatedData['address'];
+            $demo->mobile = $validatedData['mobile'];
+            $demo->companyName = $validatedData['companyName'];
+            $demo->save();
+
+            // Initialize PHPMailer
+            $mail = new PHPMailer(true);
+            // SMTP configuration
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'anas.h.khan2244@gmail.com'; // SMTP username
+            $mail->Password = 'hgyxiznoorozmysy';  // Your Gmail password
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+            // Sender and recipient settings
+            $mail->setFrom($validatedData['email'], $validatedData['name']); // Sender's email address and name
+            $mail->addAddress('anas.h.k2244@gmail.com'); // Recipient's email address
+            // Email content
+            $mail->isHTML(true);
+            $mail->Subject = 'New Demo Request';
+            $mail->Body = "
+            <html>
+            <head>
+                <title>New Demo Request</title>
+            </head>
+            <body>
+                <h2>New Demo Request Details</h2>
+                <p><strong>Name:</strong> {$validatedData['name']}</p>
+                <p><strong>Email:</strong> {$validatedData['email']}</p>
+                <p><strong>Address:</strong> {$validatedData['address']}</p>
+                <p><strong>Mobile:</strong> {$validatedData['mobile']}</p>
+                <p><strong>Company Name:</strong> {$validatedData['companyName']}</p>
+            </body>
+            </html>
+        ";
+
+            // Send email
+            $mail->send();
+
+            return redirect()->route('message')->with('success', 'Thank you for your demo request! We will get back to you soon.');
+
+        } catch (QueryException $e) {
+            return redirect()->route('message')->with('error', 'Failed to submit demo request. Please try again later.');
+        } catch (\Exception $e) {
+            return redirect()->route('message')->with('error', 'An error occurred while processing your request. Please try again later.');
         }
     }
 
